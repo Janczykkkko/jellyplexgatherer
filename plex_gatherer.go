@@ -39,7 +39,7 @@ func GetPlexSessions(plexAddress, plexApiKey string) (plexsessions []SessionData
 	for _, session := range sessions.Video {
 		data := SessionData{
 			UserName:   session.User.Title,
-			Name:       session.Title,
+			Name:       getPlexTitle(session),
 			Bitrate:    getPlexStreamBitrate(session),
 			PlayMethod: session.Media.Part.Decision,
 			SubStream:  getPlexSubStream(session),
@@ -77,4 +77,11 @@ func getPlexDevice(session PlexVideoSession) string {
 		return session.Player.Device
 	}
 	return session.Player.Title
+}
+
+func getPlexTitle(session PlexVideoSession) string {
+	if session.Type == "episode" {
+		return session.GrandparentTitle + " - " + session.Title
+	}
+	return session.Title
 }
