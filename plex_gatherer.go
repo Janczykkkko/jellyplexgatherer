@@ -81,7 +81,7 @@ func getPlexDevice(session PlexVideoSession) string {
 
 func getPlexTitle(session PlexVideoSession) string {
 	if session.Type == "episode" {
-		name := fmt.Sprintf("%s - %s Episode %d - %s", session.GrandparentTitle, session.ParentTitle, session.Index, session.Title)
+		name := fmt.Sprintf("%s - %s Episode %s - %s", session.GrandparentTitle, session.ParentTitle, session.Index, session.Title)
 		return name
 	}
 	return session.Title
