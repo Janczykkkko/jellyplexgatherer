@@ -63,6 +63,8 @@ type PlexVideoSession struct {
 	ViewOffset            string `xml:"viewOffset,attr"`
 	Year                  string `xml:"year,attr"`
 	GrandparentTitle      string `xml:"grandparentTitle,attr"`
+	ParentTitle           string `xml:"parentTitle,attr"`
+	Index                 string `xml:"index,attr"`
 	Media                 struct {
 		Text                  string `xml:",chardata"`
 		AspectRatio           string `xml:"aspectRatio,attr"`

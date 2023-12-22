@@ -95,19 +95,9 @@ func getJellyStreamBitrate(session JellySession) (bitrate string) {
 // There are two types of returned data, need to check and adjust where to look for media name accordingly
 func getJellyMediaName(session JellySession) (name string) {
 	name = "Not found"
-	//tmp untill working confirmed
-	/*if len(session.NowPlayingQueueFullItems) > 0 &&
-		session.PlayState.PlayMethod != "" {
-		name = session.NowPlayingQueueFullItems[0].MediaSources[0].Name
-	}
-	if len(session.FullNowPlayingItem.Container) > 0 &&
-		session.NowPlayingItem.Name != "" &&
-		!session.PlayState.IsPaused {
-		name = session.NowPlayingItem.Name
-	}*/
 	name = session.NowPlayingItem.Name
 	if session.NowPlayingItem.SeriesName != "" {
-		name = session.NowPlayingItem.SeriesName + " - " + name
+		name = fmt.Sprintf("%s - %s Episode %d - %s", session.NowPlayingItem.SeriesName, session.NowPlayingItem.SeasonName, session.NowPlayingItem.IndexNumber, name)
 	}
 	return name
 }
