@@ -104,11 +104,5 @@ func getJellyMediaName(session JellySession) (name string) {
 
 // Jellyfin returns not only playback sessions, also quasi empty 'device is active' sessions. Need to account for that. Silly, I know.
 func isJellyStream(session JellySession) bool {
-	if (len(session.NowPlayingQueueFullItems) < 1) ||
-		session.PlayState.PlayMethod == "" ||
-		session.NowPlayingItem.Name == "" ||
-		session.PlayState.IsPaused {
-		return false
-	}
-	return true
+	return session.PlayState.PositionTicks > 0
 }
