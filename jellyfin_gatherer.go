@@ -64,8 +64,7 @@ func getJellySubstream(session JellySession) (substream string) {
 		session.PlayState.SubtitleStreamIndex < len(session.NowPlayingQueueFullItems[0].MediaStreams) {
 		substream = session.NowPlayingQueueFullItems[0].MediaStreams[session.PlayState.SubtitleStreamIndex].DisplayTitle
 	}
-	if len(session.FullNowPlayingItem.Container) > 0 &&
-		session.PlayState.SubtitleStreamIndex >= 0 &&
+	if session.PlayState.SubtitleStreamIndex >= 0 &&
 		session.PlayState.SubtitleStreamIndex < len(session.NowPlayingItem.MediaStreams) {
 		substream = session.NowPlayingItem.MediaStreams[session.PlayState.SubtitleStreamIndex].DisplayTitle
 	}
