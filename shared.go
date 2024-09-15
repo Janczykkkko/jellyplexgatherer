@@ -2240,3 +2240,28 @@ type JellySession struct {
 	UserPrimaryImageTag string   `json:"UserPrimaryImageTag"`
 	SupportedCommands   []string `json:"SupportedCommands"`
 }
+
+type JellyActivityLog struct {
+	Items []struct {
+		ID                  int       `json:"Id"`
+		Name                string    `json:"Name"`
+		Overview            string    `json:"Overview"`
+		ShortOverview       string    `json:"ShortOverview"`
+		Type                string    `json:"Type"`
+		ItemID              string    `json:"ItemId"`
+		Date                time.Time `json:"Date"`
+		UserID              string    `json:"UserId"`
+		UserPrimaryImageTag string    `json:"UserPrimaryImageTag"`
+		Severity            string    `json:"Severity"`
+	} `json:"Items"`
+	TotalRecordCount int `json:"TotalRecordCount"`
+	StartIndex       int `json:"StartIndex"`
+}
+
+type JellyUserStatus struct {
+	UserName string
+	Device   string
+	Online   bool
+}
+
+type JellyOnlineUsers []JellyUserStatus
