@@ -33,7 +33,7 @@ func GetJellyActivityLogData(jellyfinAddress, jellyfinApiKey string, minutesSinc
 	if err != nil {
 		return JellyActivityLog{}, fmt.Errorf("failed to decode response: %v", err)
 	}
-
+	log.Println("Jellyfin activity data scraped succesfully")
 	return activityLog, nil
 }
 
